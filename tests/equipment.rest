@@ -1,0 +1,39 @@
+@host = http://localhost:3000
+
+get {{host}}/equipment
+
+###
+
+get {{host}}/equipment/1
+
+###
+
+post {{host}}/equipment/new
+content-type: application/json
+
+{
+    "name": "Drone",
+    "serial": "12345-xxx-nnn",
+    "description": "Agras T16",
+    "location": "On mission location",
+    "is_alert": "0",
+    "qr_code_url": "www.sktaeroshutter/api/foobar1"
+}
+
+###
+
+put {{host}}/equipment/4
+content-type: application/json
+
+{
+    "name": "Drone",
+    "serial": "12345-xxx-nnn",
+    "description": "Agras T16",
+    "location": "On mission location",
+    "is_alert": "1",
+    "qr_code_url": "www.sktaeroshutter/api/foobar1"
+}
+
+###
+
+delete {{host}}/equipment/4

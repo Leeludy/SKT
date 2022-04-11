@@ -1,0 +1,39 @@
+@host = http://localhost:3000
+
+get {{host}}/users
+
+###
+
+get {{host}}/users/1
+
+###
+
+post {{host}}/users/new
+content-type: application/json
+
+{
+    "first_name": "Peter",
+    "last_name": "Badass",
+    "email": "terrybadass@badass.com",
+    "password": "badass",
+    "access_level": "2",
+    "notes": "Badass admin"
+}
+
+###
+
+put {{host}}/users/1
+content-type: application/json
+
+{
+    "first_name": "Terry",
+    "last_name": "Badass",
+    "email": "terrybadass@badass.com",
+    "password": "badass",
+    "access_level": "1",
+    "notes": "Badass Admin"
+}
+
+###
+
+delete {{host}}/users/7
