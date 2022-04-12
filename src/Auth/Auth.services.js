@@ -19,6 +19,7 @@ function setUser(login, password) {
     })
   }
   
+
   function getUsers() {
     /* return new Promise((resolve, reject) => {
       setTimeout(() => reject(['Alexis', 'Sebastien', 'Thomas', 'Luc', 'Derya']), 2000)
@@ -41,5 +42,5 @@ function setUser(login, password) {
       })
  
   }
-  
+
   export { setUser, getUsers }

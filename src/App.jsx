@@ -1,16 +1,11 @@
-import { QueryClient, QueryClientProvider } from 'react-query'
-import Login from './Auth/Login'
-
-const queryClient = new QueryClient()
+import React from "react";
+import UsersFetch from "./components/Users";
 
 function App() {
   return (
-    // Provide the client to your App
-    <QueryClientProvider client={queryClient}>
-      <Login />
-    </QueryClientProvider>
-  )
-}
+    <div className= "App">
+      <UsersFetch />
+    </div>
+  )};
 
-// or export default
-export { App }
+export {App};
