@@ -6,7 +6,7 @@ const pool = mariadb.createPool({
   host: '172.17.0.2',
   user: 'root',
   password: 'root',
-  database: 'skt_database',
+  database: 'skt_database_2',
 });
 
 // Create connection

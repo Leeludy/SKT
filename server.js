@@ -12,7 +12,8 @@ const { format } = require('date-fns');
 const { v4: uuidv4 } = require('uuid');
 
 // Load cors
-const cors = require ('cors');
+const cors = require('cors');
+app.use(cors({ origin: '*', credentials: true }));
 
 // Load bcrypt
 const bcrypt = require('bcrypt');
@@ -24,21 +25,15 @@ const jwt = require('jsonwebtoken');
 app.use(express.static('public'));
 
 // Define Routes
-const registerRoute = require('./routes/register');
-const loginRoute = require('./routes/login');
-const forgotPasswordRoute = require('./routes/forgotPassword');
 const userRoute = require('./routes/users');
 const equipmentRoute = require('./routes/equipment');
 
 // Use Routes
-app.use('/register', registerRoute);
-app.use('/login', loginRoute);
-app.use('/forgotPassword', forgotPasswordRoute);
 app.use('/users', userRoute);
 app.use('/equipment', equipmentRoute);
 
 // Initialize listening port
-const port =  3030;
+const port = 3030;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

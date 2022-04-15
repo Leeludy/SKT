@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(express.json());
 
 // Load mariadb pool
-const pool = require('../db/db');
+const pool = require('../db/skt_db');
 
 // Endpoint All Users '/users'
 router.get('/', async (req, res) => {
@@ -38,7 +38,7 @@ router.post('/new', async (req, res) => {
 
     // Create new query
     const myquery =
-      "INSERT INTO users (first_name, last_name, email, password, access_level, notes) VALUES (?, ?, ?, ?, ?, ?)";
+      "INSERT INTO users (first_name, last_name, email, password, role, notes) VALUES (?, ?, ?, ?, ?, ?)";
 
     // Execute query
     const rows = await conn.query(myquery, [
@@ -46,7 +46,7 @@ router.post('/new', async (req, res) => {
       req.body.last_name,
       req.body.email,
       req.body.password,
-      req.body.access_level,
+      req.body.role,
       req.body.notes,
     ]);
     
@@ -88,7 +88,7 @@ router.put('/:id', async (req, res) => {
 
       // Create new query
       const myquery =
-        'UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, access_level = ?, notes = ? WHERE id = ?';
+        'UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, role = ?, notes = ? WHERE id = ?';
 
       // Execute query
       const rows = await conn.query(myquery, [
@@ -96,7 +96,7 @@ router.put('/:id', async (req, res) => {
         req.body.last_name,
         req.body.email,
         req.body.password,
-        req.body.access_level,
+        req.body.role,
         req.body.notes,
         req.user
       ]);

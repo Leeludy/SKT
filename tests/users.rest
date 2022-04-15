@@ -1,4 +1,4 @@
-@host = http://localhost:3000
+@host = http://localhost:3030
 
 get {{host}}/users
 
@@ -12,12 +12,12 @@ post {{host}}/users/new
 content-type: application/json
 
 {
-    "first_name": "Peter",
-    "last_name": "Badass",
-    "email": "terrybadass@badass.com",
-    "password": "badass",
-    "access_level": "2",
-    "notes": "Badass admin"
+    "first_name": "Dave",
+    "last_name": "Galbe",
+    "email": "davetest.com",
+    "password": "junior/2",
+    "role": "Admin",
+    "notes": "In full charge"
 }
 
 ###
@@ -30,7 +30,7 @@ content-type: application/json
     "last_name": "Badass",
     "email": "terrybadass@badass.com",
     "password": "badass",
-    "access_level": "1",
+    "role": "Admin",
     "notes": "Badass Admin"
 }
 
