@@ -1,5 +1,5 @@
 import React from "react";
-import UsersFetch from "../components/Users";
+import UsersFetch from "../components/Users/Users.js";
 
 function Admin() {
   return (

@@ -3,9 +3,7 @@ import React from 'react'
 function Header() {
   return (
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <a className='navbar-brand ms-3' href='#'>
-              SKT Aeroshutter
-          </a>
+          <a className='navbar-brand ms-3' href='/'><strong>SKT Aeroshutter</strong></a>
           <button
               className='navbar-toggler'
               type='button'
@@ -20,7 +18,7 @@ function Header() {
           <div className='collapse navbar-collapse' id='navbarNav'>
               <ul className='navbar-nav'>
                   <li className='nav-item active'>
-                      <a className='nav-link' href='#'>
+                      <a className='nav-link' href= '#'>
                           Admin <span className='sr-only'></span>
                       </a>
                   </li>
@@ -35,4 +33,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;

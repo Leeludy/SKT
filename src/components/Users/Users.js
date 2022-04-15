@@ -1,9 +1,8 @@
-// Loading component's libraries
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/users.css';
+// import './styles/users.css';
 
 // Function to load and render Users component
 function UsersFetch() {
@@ -50,17 +49,19 @@ function UsersFetch() {
                         loading ? (
                           <div className="text-center">
                             <div className="spinner-border text-primary" role="status">
-                              <span className="sr-only">Loading...</span>
+                              <span className="sr-only"></span>
                             </div>
                           </div>
                         ) : (
+                          
                           users.map((user) => (
+                            
                             <CTableRow key={user.id}>
                               <CTableDataCell>{user.id}</CTableDataCell>
                               <CTableDataCell>{user.first_name}</CTableDataCell>
                               <CTableDataCell>{user.last_name}</CTableDataCell>
                               <CTableDataCell>{user.email}</CTableDataCell>
-                              <CTableDataCell>{user.access_level}</CTableDataCell>
+                              <CTableDataCell>{user.role}</CTableDataCell>
                               <CTableDataCell>{user.notes}</CTableDataCell>
                             </CTableRow>
                           ))
@@ -79,4 +80,3 @@ function UsersFetch() {
 };
 
 export default UsersFetch;
-
