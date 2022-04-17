@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from "./pages/Admin";
 import ProductAdmin from "./pages/ProductAdmin";
 import Pilot from "./pages/Pilot";
