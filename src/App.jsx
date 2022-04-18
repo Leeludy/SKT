@@ -7,6 +7,7 @@ import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Login from "./components/Auth/Login";
 import Dashboard from "./pages/Dashboard";
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/admindashboard' element={<AdminDashboard />} />
         <Route path='/productadmin' element={<ProductAdmin />} />
         <Route path='/pilot' element={<Pilot />} />
         <Route path='/' element={<Login />} />
