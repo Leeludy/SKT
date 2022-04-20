@@ -1,14 +1,42 @@
-
-// eslint-disable-next-line
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react';
-import useFetch from '../../hooks/useFetch';
 
-
-// Function to load and render All Users
+// Function to load and render Users component
 function UsersFetch() {
-  const { data: users, loading, error: errorMessage } = useFetch('/users');
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  if (loading) return <p>Loading...</p>;
+  // Make API request to get users
+  useEffect(() => {
+    axios.get('http://localhost:3030/users')
+      .then((res) => {
+        
+        if (res.statusText !== "OK") {
+          throw new Error(res.statusText);
+        }
+        setUsers(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        if (err.response) {
+          // Request made and server responded
+          // console.log(err.response.data);
+          console.log(err.response.status);
+          setErrorMessage(`Sorry: ${err.message} - Please try again later.`);
+          // console.log(err.response.headers);
+        } else if (err.request) {
+          // The request was made but no response was received
+          // console.log(err.data);
+          setErrorMessage("Sorry: Server is not responding - Please try again later.");
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          
+        }
+        setErrorMessage(`Sorry: ${err.message} - Please try again later.`);
+      });
+  }, []);
 
   const editUser = (id) => {
     console.log(`Edit user no. ${id}`);
@@ -19,7 +47,7 @@ function UsersFetch() {
   };
 
   const renderUsers = (
-
+    
     <div className="container py-5">
       <div className="row">
         <div className="col-md-12">
@@ -68,7 +96,9 @@ function UsersFetch() {
       </div>
     </div>
   );
+
   
+                      
   // If there is an error, render error message.
   if (errorMessage) {
     return (
@@ -76,10 +106,16 @@ function UsersFetch() {
         {errorMessage}
       </div>
     );
+
   };
-
-
-  return renderUsers;
+  // Render ender Users component.
+  return (
+    <div>
+      {isLoading && <p>Loading...</p>}
+      {renderUsers}
+    </div>
+  )
+                    
 };
 
 export default UsersFetch;

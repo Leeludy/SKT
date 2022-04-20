@@ -1,5 +1,7 @@
 import React from "react";
-import UsersFetch from "../components/Users/Users.js";
+import Users from "../components/Users/ApiUsers.js";
+// import UsersFetch from "../components/Users/Users.js";
+
 
 function Admin() {
   return (
@@ -11,14 +13,14 @@ function Admin() {
               <h3 className="card-title">Admin Dashboard</h3>
             </div>
             <div className="card-body">
-              <UsersFetch />
+              {/* <UsersFetch /> */}
+              <Users/>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-<UsersFetch />
 export default Admin;
