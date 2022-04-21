@@ -1,4 +1,5 @@
 import React from "react";
+import EquipmentList from "../components/Equipment/EquipmentList";
 
 /**
  * Function that return the content of the equipment page
@@ -15,7 +16,7 @@ function Equipment() {
               <h3 className="card-title">Equipment List</h3>
             </div>
             <div className="card-body">
-              {/* Equipment list Componant */}
+              <EquipmentList/>
             </div>
           </div>
         </div>
