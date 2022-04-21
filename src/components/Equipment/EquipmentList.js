@@ -1,45 +1,47 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react';
+import CheckState from '../Utils/CheckState';
+import IntToBool from '../Utils/IntToBool';
 
-// Function to load and render Equipment component
-function EquipmentList() {
+/**
+ * Render a list of equipment as a table
+ * @param {array} listEquipment array of equipment
+ * @returns Render view of the array
+ */
+function EquipmentList(listEquipment) {
 
-    const [equipmentList, setEquipmentList] = useState([]);
-
-    // Make API request to get equipment
-    useEffect(() => {
-        axios.get('http://localhost:3030/equipment')
-            .then((res) => {
-                setEquipmentList(res.data);
-            })
-            .catch((err) => {
-                throw err;
-            });
-    }, []);
-
-    // View Render - Table equipment
     return (
-        <div className="container py-5">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="card">
-                        <div className="card-header">
-                            <h3 className="card-title">List</h3>
-                        </div>
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-md-12">
-                                    {/* Render list equipment */}{console.log(equipmentList)}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <CTable striped>
+            <CTableHead>
+                <CTableRow>
+                    <CTableHeaderCell>ID</CTableHeaderCell>
+                    <CTableHeaderCell>Model</CTableHeaderCell>
+                    <CTableHeaderCell>Serial</CTableHeaderCell>
+                    <CTableHeaderCell>Categorie</CTableHeaderCell>
+                    <CTableHeaderCell>Location</CTableHeaderCell>
+                    <CTableHeaderCell>Alert</CTableHeaderCell>
+                </CTableRow>
+            </CTableHead>
+            <CTableBody>
+                {
+                    (
+                        listEquipment.map((equipment) => (
+
+                            <CTableRow key={equipment.id}>
+                                <CTableDataCell>{equipment.id}</CTableDataCell>
+                                <CTableDataCell>{equipment.model_name}</CTableDataCell>
+                                <CTableDataCell>{equipment.serial_number}</CTableDataCell>
+                                <CTableDataCell>{equipment.model_categorie}</CTableDataCell>
+                                <CTableDataCell>{equipment.location}</CTableDataCell>
+                                <CTableDataCell>{CheckState(IntToBool(equipment.is_alert))}</CTableDataCell>
+                            </CTableRow>
+
+                            )
+                        )
+                    )
+                }
+            </CTableBody>
+        </CTable>
     );
+}
 
-};
-
-export default EquipmentList;
+export default EquipmentList
