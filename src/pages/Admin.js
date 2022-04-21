@@ -1,5 +1,4 @@
 import React from "react";
-import UsersFetch from "../components/Users/Users.js";
 
 function Admin() {
   return (
@@ -11,7 +10,7 @@ function Admin() {
               <h3 className="card-title">Admin Dashboard</h3>
             </div>
             <div className="card-body">
-              <UsersFetch />
+
             </div>
           </div>
         </div>
@@ -20,5 +19,4 @@ function Admin() {
   );
 }
 
-<UsersFetch />
 export default Admin;
