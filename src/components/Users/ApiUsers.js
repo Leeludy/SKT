@@ -34,21 +34,17 @@ const Users = () => {
             method: 'post',
             url: '/users/new',
             requestConfig: {
-                
+
                 first_name: 'Test',
                 last_name: 'Doe',
                 email: 'john@beweb.com',
                 password: 'password123',
                 role: 'Product Admin',
                 notes: 'Headache Admin'
-
             }
         })
             .then(() => {
-                window.location.reload();
-                // <Redirect to="/admin"/>
-                // getData();
-
+                getData();
             });
     };
 
@@ -62,10 +58,7 @@ const Users = () => {
             requestConfig: {}
         })
             .then(() => {
-                window.location.reload();
-                // <Redirect to="/admin"/>
-                // getData();
-
+                getData();
             });
     };
 
@@ -73,8 +66,6 @@ const Users = () => {
     const editUser = (id) => {
         setHidden(s => !s);
         // load user data and pass it to form placeholder <<<<---- IMPORTANT
-
-        console.log(`Edit user no. ${id}`);
     };
 
     // Render User's table
@@ -146,7 +137,7 @@ const Users = () => {
                                                 </CTableHead>
                                                 <CTableBody>
                                                     {
-                                                        users && users.length > 0 && users.map((user) =>
+                                                        users && users.length >= 1 && users.map((user) =>
                                                         (
                                                             <CTableRow key={user.id}>
                                                                 <CTableDataCell>{user.id}</CTableDataCell>

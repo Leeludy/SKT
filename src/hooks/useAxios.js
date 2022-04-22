@@ -22,9 +22,8 @@ const useAxios = () => {
                 ...requestConfig,
                 signal: ctrl.signal
             });
-            setResponse(Object.keys(res.data).map(i => res.data[i]));
+            setResponse(res.data);
         } catch (err) {
-            console.log(err.message);
             setError(err.message);
         } finally {
             setLoading(false);
