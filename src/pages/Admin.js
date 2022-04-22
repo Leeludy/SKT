@@ -1,9 +1,8 @@
 import React from "react";
 import Users from "../components/Users/ApiUsers.js";
-// import UsersFetch from "../components/Users/Users.js";
-
 
 function Admin() {
+
   return (
     <div className="container py-5 text-center">
       <div className="row">
@@ -13,7 +12,6 @@ function Admin() {
               <h3 className="card-title">Admin Dashboard</h3>
             </div>
             <div className="card-body">
-              {/* <UsersFetch /> */}
               <Users/>
             </div>
           </div>

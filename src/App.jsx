@@ -9,6 +9,7 @@ import Footer from "./pages/Footer";
 import Login from "./components/Auth/Login";
 import Dashboard from "./pages/Dashboard";
 
+
 function App() {
   return (
     <Router>
