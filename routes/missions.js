@@ -8,15 +8,17 @@ router.use(express.json());
 // Load mariadb pool
 const pool = require('../db/db');
 
-// Endpoint All Users '/users'
+// Endpoint All Missions '/missions'
 router.get('/', async (req, res) => {
- 
-  try {
+
+  console.log('HEY!!!');
+
+   try {
     // Get connection from pool
     const conn = await pool.getConnection();
 
     // Create new query
-    const myquery = "SELECT * FROM users";
+    const myquery = "SELECT * FROM missions";
 
     // Execute query
     const rows = await conn.query(myquery);
@@ -26,11 +28,11 @@ router.get('/', async (req, res) => {
 
   } catch (err) {
     console.log(err);
-  }
+  } 
 });
 
-// Endpoint New User '/users/new'
-router.post('/new', async (req, res) => {
+// Endpoint New Mission '/missions/'
+router.post('/', async (req, res) => {
 
   try {
     // Get connection from pool
@@ -38,27 +40,26 @@ router.post('/new', async (req, res) => {
 
     // Create new query
     const myquery =
-      "INSERT INTO users (first_name, last_name, email, password, role, notes) VALUES (?, ?, ?, ?, ?, ?)";
-
+      "INSERT INTO missions (title, description, location, start_date, end_date, customer_info) VALUES (?, ?, ?, ?, ?, ?)";
     // Execute query
     const rows = await conn.query(myquery, [
-      req.body.first_name,
-      req.body.last_name,
-      req.body.email,
-      req.body.password,
-      req.body.role,
-      req.body.notes,
+      req.body.title,
+      req.body.description,
+      req.body.location,
+      req.body.start_date,
+      req.body.end_date,
+      req.body.customer_info,
     ]);
     
     // Response to client
-    res.status(201).send(`User ${req.body.first_name}, created!`);
+    res.status(201).send({message: 'User created!'});
     
   } catch (err) {
     console.log(err);
   }
 });
 
-// Endpoint Single User /users/1
+// Endpoint Single Mission /missions/1
 router.get('/:id', async (req, res) => {
 
   try {
@@ -66,10 +67,10 @@ router.get('/:id', async (req, res) => {
     const conn = await pool.getConnection();
 
     // Create new query
-    const myquery = "SELECT * FROM users WHERE id = ?";
+    const myquery = "SELECT * FROM missions WHERE id = ?";
 
     // Execute query
-    const rows = await conn.query(myquery, [req.user]);
+    const rows = await conn.query(myquery, [req.mission]);
 
     // Response to client
     res.status(200).json(rows);
@@ -79,7 +80,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Endpoint Update User '/users/update/:id'
+// Endpoint Update Mission '/Missions/update/:id'
 router.put('/:id', async (req, res) => {
 
     try {
@@ -88,27 +89,27 @@ router.put('/:id', async (req, res) => {
 
       // Create new query
       const myquery =
-        'UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, role = ?, notes = ? WHERE id = ?';
+        'UPDATE missions SET title = ?, description = ?, location = ?, start_date = ?, end_date = ?, customer_info = ? WHERE id = ?';
 
       // Execute query
       const rows = await conn.query(myquery, [
-        req.body.first_name,
-        req.body.last_name,
-        req.body.email,
-        req.body.password,
-        req.body.role,
-        req.body.notes,
-        req.user
+        req.body.title,
+        req.body.description,
+        req.body.location,
+        req.body.start_date,
+        req.body.end_date,
+        req.body.customer_info,
+        req.mission
       ]);
 
       // Response to client
-      res.status(202).send('Users updated!');
+      res.status(202).send({message:'Missions updated!'});
     } catch (err) {
         console.log(err);
     }
 });
 
-// Endpoint Delete User '/users/delete/1'
+// Endpoint Delete Mission '/Missions/delete/1'
 router.delete('/:id', async (req, res) => {
 
   try {
@@ -116,22 +117,22 @@ router.delete('/:id', async (req, res) => {
     const conn = await pool.getConnection();
 
     // Create new query
-    const myquery = "DELETE FROM users WHERE id = ?";
+    const myquery = "DELETE FROM Missions WHERE id = ?";
 
     // Execute query
-    const rows = await conn.query(myquery, [req.user]);
+    const rows = await conn.query(myquery, [req.mission]);
 
     // Response to client
-    res.status(200).send('User deleted!');
+    res.status(200).send({message:'Mission deleted!'});
 
   } catch (err) {
     console.log(err);
   }
 });
 
-// Router params for user id
+// Router params for Mission id
 router.param('id', (req, res, next, id) => {
-    req.user = id;
+    req.mission = id;
     next();
 });
 

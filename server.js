@@ -27,10 +27,12 @@ app.use(express.static('public'));
 // Define Routes
 const userRoute = require('./routes/users');
 const equipmentRoute = require('./routes/equipment');
+const missionRoute = require('./routes/missions');
 
 // Use Routes
 app.use('/users', userRoute);
 app.use('/equipment', equipmentRoute);
+app.use('/missions', missionRoute);
 
 // Initialize listening port
 const port = 3030;

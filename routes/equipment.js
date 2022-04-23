@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(express.json());
 
 // Load mariadb pool
-const pool = require('../db/skt_db');
+const pool = require('../db/db');
 
 // Endpoint All equipment '/equipment'
 router.get('/', async (req, res) => {
