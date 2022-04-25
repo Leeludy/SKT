@@ -1,5 +1,9 @@
 import { useForm } from "react-hook-form";
 
+function formatDate(date) {
+  return (date ? new Date(date) : new Date()).toISOString().slice(0, 10);
+}
+
 /*
  *
  */
@@ -14,8 +18,8 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
       title: mission?.title,
       description: mission?.description,
       location: mission?.location,
-      start_date: new Date(mission?.start_date).toISOString().slice(0, 10),
-      end_date: new Date(mission?.end_date).toISOString().slice(0, 10),
+      start_date: formatDate(mission?.start_date),
+      end_date: formatDate(mission?.end_date),
       customer_info: mission?.customer_info,
     },
   });
