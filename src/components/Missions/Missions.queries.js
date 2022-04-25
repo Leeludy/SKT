@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getMissions } from "./Missions.services";
+import { getMissions, postMission } from "./Missions.services";
 
 /* the key string 'useQueryMissions' normaly found as the first argument of the get function useQueryMissions
  * is here gived a name in the useQueryMissionName
@@ -11,4 +11,9 @@ function useQueryMissions(options) {
   return useQuery(useQueryMissionsName, () => getMissions(), options);
 }
 
-export { useQueryMissions };
+// reactQuery to create a mission
+function useMutationCreateMission(options) {
+  return useMutation(({ mission }) => postMission(mission), options);
+}
+
+export { useQueryMissions, useMutationCreateMission };
