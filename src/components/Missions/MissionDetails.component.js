@@ -5,8 +5,11 @@ import { MissionForm } from "./MissionForm.component";
 import { useMutationEditMission } from "./Missions.queries";
 import { toast } from "react-toastify";
 import { MissionDeleteModal } from "./MissionDelete.modal";
+import { useQueryClient } from "react-query";
 
 function MissionDetails({ mission }) {
+  // Query watch state of the page
+  const queryClient = useQueryClient();
   // UseState watch readOnly
   const [isReadOnly, setReadOnly] = useState(true);
 
@@ -18,6 +21,7 @@ function MissionDetails({ mission }) {
     onSuccess() {
       setReadOnly(true);
       toast.success("Modified with success!");
+      queryClient.invalidateQueries("useQueryMissions");
     },
     onError() {
       toast.error("An error occured");

@@ -2,6 +2,7 @@ import React from "react";
 
 import { useQueryMissions } from "./Missions.queries";
 import { Container, Accordion, Button } from "react-bootstrap";
+import { MissionDetails } from "./MissionDetails.component";
 
 // Function to load and render Missions component as an Accordion
 function MissionsList() {
@@ -36,17 +37,18 @@ function MissionsList() {
       {queryMissions.data.map((mission) => (
         <Accordion.Item key={mission.id} eventKey={mission.id}>
           <Accordion.Header className="flex">
-            <div className="row  justify-content-between">
+            <div className="row col-11 align-items-center">
               <div className="col">
-                {mission.title}
+                <span className="fw-bold">{mission.title}</span>
                 <div>
-                  {mission.start_date}/{mission.end_date}
+                  {new Date(mission?.start_date).toISOString().slice(0, 10)} /
+                  {new Date(mission?.end_date).toISOString().slice(0, 10)}
                 </div>
               </div>
 
-              <div className="col">
+              <div className="col d-flex justify-content-end">
                 {/* {equipment.drone} {mission.pilot} */}
-                Drone Pilots
+                Drone - Pilots
               </div>
             </div>
           </Accordion.Header>

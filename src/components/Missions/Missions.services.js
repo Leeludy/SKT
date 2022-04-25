@@ -18,3 +18,12 @@ function putMission(mission) {
     .put(`http://localhost:3030/missions/${mission.id}`, mission)
     .then(({ data }) => data);
 }
+
+// Axios delete datas of the DB
+function deleteMission(mission) {
+  return axios
+    .delete(`http://localhost:3030/missions/${mission.id}`, mission)
+    .then(({ data }) => data);
+}
+
+export { getMissions, postMission, putMission, deleteMission };

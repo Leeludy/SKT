@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Base Styles */
 * {
@@ -6,4 +7,50 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Colors Theme */
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #494949;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(73, 73, 73, 1), rgba(173, 181, 70, 1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(73, 73, 73, 1), rgba(173, 181, 70, 1))
+}
+.bg-dkGray {
+    background-color: #494949;
+}
+.bg-ltGray {
+    background-color: #a7a7a7;
+}
+.bg-green {
+    background-color: #adb546;
+}
+
+
+div.noPadding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.Margin {
+    margin-left: 6;
+    margin-right: 6;
+    margin-top: 2;
+    margin-bottom: 2;
+}
+
+.nav-custom {
+    max-width: 80%;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 2;
+    padding-bottom: 2;
+}
+
+.header-dropdown-menu {
+    overflow: visible;
 }
