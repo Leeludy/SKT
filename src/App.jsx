@@ -17,6 +17,7 @@ function App() {
         <Route path='/admin' element={<Admin />} />
         <Route path='/productadmin' element={<ProductAdmin />} />
         <Route path='/pilot' element={<Pilot />} />
+        <Route path='/missions/*' element={Missions} />
         <Route path='/' element={<Login />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
