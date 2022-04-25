@@ -1,13 +1,17 @@
-import React from 'react'
+import React from "react";
+import { Navbar } from "react-bootstrap";
 
 function Footer() {
   return (
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <a className='footer text-center ms-3' href='#'>
-              SKT Aeroshutter
-          </a>
-      </nav>
-  )
+    <Navbar
+      className="navbar bg-dkGray pr-4"
+      fixed="bottom"
+      variant="dark"
+      style={{ display: "flex", flexDirection: "row", justifyContent: "right" }}
+    >
+      <span>SKT Aeroshutter © Copyright 2022</span>
+    </Navbar>
+  );
 }
 
-export default Footer
+export default Footer;
