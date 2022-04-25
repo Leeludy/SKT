@@ -10,6 +10,7 @@ import Login from "./components/Auth/Login";
 import Dashboard from "./pages/Dashboard";
 import SidebarAdmin from './pages/SidebarAdmin';
 
+import Equipment from './pages/Equipment';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/admin' element={<Admin />} />
         <Route path='/productadmin' element={<ProductAdmin />} />
         <Route path='/pilot' element={<Pilot />} />
+        <Route path='/equipment' element={<Equipment />} />
         <Route path='/' element={<Login />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
