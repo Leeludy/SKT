@@ -1,5 +1,4 @@
 import React from "react";
-import Users from "../components/Users/ApiUsers.js";
 
 function Admin() {
 
@@ -12,7 +11,6 @@ function Admin() {
               <h3 className="card-title">Admin Dashboard</h3>
             </div>
             <div className="card-body">
-              <Users/>
             </div>
           </div>
         </div>
