@@ -11,3 +11,10 @@ function postMission(mission) {
     .post("http://localhost:3030/missions", mission)
     .then(({ data }) => data);
 }
+
+// Axios put datas in DB
+function putMission(mission) {
+  return axios
+    .put(`http://localhost:3030/missions/${mission.id}`, mission)
+    .then(({ data }) => data);
+}
