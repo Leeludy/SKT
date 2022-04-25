@@ -29,3 +29,24 @@
 .bg-green {
     background-color: #adb546;
 }
+
+
+div.noPadding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.Margin {
+    margin-left: 6;
+    margin-right: 6;
+    margin-top: 2;
+    margin-bottom: 2;
+}
+
+.nav-custom {
+    max-width: 80%;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 2;
+    padding-bottom: 2;
+}

@@ -6,7 +6,7 @@ import { BsBell, BsBoxSeam, BsFillBriefcaseFill, BsPeople, BsUpcScan } from "rea
 function SidebarAdmin() {
   return (
 
-    <SideNav style={{ background: '#494949' }}
+    <SideNav style={{ background: '#494949', top: 90 }}
 
     onSelect={(selected) => {
         // Add your code here
