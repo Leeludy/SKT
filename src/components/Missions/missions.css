@@ -22,13 +22,16 @@ form label {
     font-weight: bold;
 }
 
-
-.sticky-nav {
-  padding: 10px;
-  text-align: center;
-  width: 100%;
-  
+.mission-header {
   position: fixed;
-  top: 93px;
+  top: 95;
+  z-index: 999;
+  padding-top: 1rem;
+  text-align: center;
   border-top: 10px white;
+  background-color: #f8f9fa;
+}
+
+.list-position {
+    padding-top: 150px;
 }

@@ -10,7 +10,7 @@ import { useQueryClient } from "react-query";
 function MissionDetails({ mission }) {
   // Query watch state of the page
   const queryClient = useQueryClient();
-  // UseState watch readOnly
+  // UseState watch readOnly for edit/render toogle mission details
   const [isReadOnly, setReadOnly] = useState(true);
 
   // UseState watch btn delete
@@ -98,7 +98,7 @@ function MissionDetails({ mission }) {
       <Container fluid>
         <Card border="light">
           {/* remplace card by <MissionsEquipmentList /> */}
-          <CardHeader>
+          <CardHeader className="d-flex justify-content-start">
             <span>Equipment</span>
           </CardHeader>
           <ul>

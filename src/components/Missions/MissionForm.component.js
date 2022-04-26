@@ -1,5 +1,14 @@
 import { useForm } from "react-hook-form";
 
+// format date to create mission (avoid undefine)
+function dateToInputDateFormat(date) {
+  return (date ? new Date(date) : new Date()).toISOString().slice(0, 10);
+}
+
+function dateToIsoFormat(date) {
+  return new Date(date).toISOString();
+}
+
 /*
  *
  */
@@ -14,8 +23,8 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
       title: mission?.title,
       description: mission?.description,
       location: mission?.location,
-      start_date: new Date(mission?.start_date).toISOString().slice(0, 10),
-      end_date: new Date(mission?.end_date).toISOString().slice(0, 10),
+      start_date: dateToInputDateFormat(mission?.start_date),
+      end_date: dateToInputDateFormat(mission?.end_date),
       customer_info: mission?.customer_info,
     },
   });
@@ -34,9 +43,18 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
   // Today date in uk format mm dd yyyy
   const today = new Date().toISOString().slice(0, 10);
 
+  function processData(data) {
+    onSubmit({
+      ...data,
+      // Convert both dates to UTC format
+      start_date: dateToIsoFormat(data.start_date),
+      end_date: dateToIsoFormat(data.end_date),
+    });
+  }
+
   // Dynamic form view render
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(processData)}>
       <div className="row ">
         <div className="form-group col-md-3 mb-3">
           <label htmlFor="title" className="">
@@ -61,7 +79,7 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
             min={today}
             {...register("start_date")}
           />
-          {errors.start_date && "Enter a Date at format DD MM YYYY"}
+          {errors.start_date && "Enter a Date at format MM DD YYYY"}
         </div>
         <div className="form-group col-md-2 mb-3">
           <label className="">Ending Date</label>
