@@ -8,6 +8,7 @@ function Header() {
   const UserName = "LastName";
   const UserFirstName = "FirstName";
   const UserRole = "Role";
+
   return (
     <Navbar sticky="top" className="gradient-custom" variant="dark">
       <Container fluid>
@@ -23,7 +24,7 @@ function Header() {
         </Navbar.Brand>
         <Nav>
           <Nav.Link
-            href="./user/{id}"
+            //href="./user/{id}"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -34,7 +35,11 @@ function Header() {
             <PersonCircle color="bg-dkGray" size={30} />
           </Nav.Link>
 
-          <NavDropdown align="end" id="dropdown-menu-align-end">
+          <NavDropdown
+            align="end"
+            id="dropdown-menu-align-end"
+            style={{ color: "darkgray" }}
+          >
             <NavDropdown.Item>
               <span className="text-uppercase">{UserRole}</span>
             </NavDropdown.Item>

@@ -41,8 +41,12 @@ function MissionsList() {
               <div className="col">
                 <span className="fw-bold">{mission.title}</span>
                 <div>
-                  {new Date(mission?.start_date).toISOString().slice(0, 10)} /
-                  {new Date(mission?.end_date).toISOString().slice(0, 10)}
+                  {new Date(mission?.start_date).toLocaleDateString()} -
+                  {new Date(mission?.end_date).toLocaleDateString("en-GB", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                  })}
                 </div>
               </div>
 
@@ -52,7 +56,7 @@ function MissionsList() {
               </div>
             </div>
           </Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body className="pt-0">
             <MissionDetails mission={mission} />
           </Accordion.Body>
         </Accordion.Item>
