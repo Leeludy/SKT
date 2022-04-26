@@ -9,7 +9,7 @@ function MissionDeleteModal({ isShown, closeModal, mission }) {
 
   const missionMutationDelete = useMutationdeleteMission({
     onSuccess() {
-      toast.success("Deleted with success!");
+      toast.success("Mission Deleted!");
       queryClient.invalidateQueries("useQueryMissions");
       closeModal();
     },
@@ -18,9 +18,9 @@ function MissionDeleteModal({ isShown, closeModal, mission }) {
   return (
     <Modal show={isShown} onHide={closeModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Delete Mission</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body>Do you realy want to delete this mission?</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={closeModal}>
           Cancel
