@@ -8,10 +8,12 @@ import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Login from "./components/Auth/Login";
 import Dashboard from "./pages/Dashboard";
+import SidebarAdmin from './pages/SidebarAdmin';
+import Equipment from './pages/Equipment';
 import { Missions } from './components/Missions';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient()
 
@@ -20,12 +22,14 @@ function App() {
     <QueryClientProvider client={queryClient}>
     <Router>
       <Header />
+      <SidebarAdmin />
       <ToastContainer />
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/productadmin' element={<ProductAdmin />} />
         <Route path='/pilot' element={<Pilot />} />
+        <Route path='/equipment' element={<Equipment />} />
         <Route path='/missions/*' element={<Missions />} />
         <Route path='/' element={<Login />} />
         <Route path='*' element={<NotFound />} />
