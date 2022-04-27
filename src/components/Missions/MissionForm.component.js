@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form";
 
 // format date to create mission (avoid undefine)
-function formatDate(date) {
+function dateToInputDateFormat(date) {
   return (date ? new Date(date) : new Date()).toISOString().slice(0, 10);
+}
+
+function dateToIsoFormat(date) {
+  return new Date(date).toISOString();
 }
 
 /*
@@ -19,8 +23,8 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
       title: mission?.title,
       description: mission?.description,
       location: mission?.location,
-      start_date: formatDate(mission?.start_date),
-      end_date: formatDate(mission?.end_date),
+      start_date: dateToInputDateFormat(mission?.start_date),
+      end_date: dateToInputDateFormat(mission?.end_date),
       customer_info: mission?.customer_info,
     },
   });
@@ -39,9 +43,18 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
   // Today date in uk format mm dd yyyy
   const today = new Date().toISOString().slice(0, 10);
 
+  function processData(data) {
+    onSubmit({
+      ...data,
+      // Convert both dates to UTC format
+      start_date: dateToIsoFormat(data.start_date),
+      end_date: dateToIsoFormat(data.end_date),
+    });
+  }
+
   // Dynamic form view render
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(processData)}>
       <div className="row ">
         <div className="form-group col-md-3 mb-3">
           <label htmlFor="title" className="">

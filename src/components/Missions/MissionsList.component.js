@@ -4,6 +4,17 @@ import { useQueryMissions } from "./Missions.queries";
 import { Container, Accordion, Button } from "react-bootstrap";
 import { MissionDetails } from "./MissionDetails.component";
 
+function formatDate(date) {
+  const isoDate = new Date(date).toISOString();
+
+  return new Date(isoDate).toLocaleDateString({
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    timeZone: "UTC",
+  });
+}
+
 // Function to load and render Missions component as an Accordion
 function MissionsList() {
   const queryMissions = useQueryMissions();
@@ -41,12 +52,9 @@ function MissionsList() {
               <div className="col">
                 <span className="fw-bold">{mission.title}</span>
                 <div>
-                  {new Date(mission?.start_date).toLocaleDateString()} -
-                  {new Date(mission?.end_date).toLocaleDateString("en-GB", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })}
+                  {formatDate(mission?.start_date)}
+                  {" - "}
+                  {formatDate(mission?.end_date)}
                 </div>
               </div>
 
