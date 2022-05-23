@@ -1,0 +1,6 @@
+@host = http://localhost:3030
+
+
+get {{host}}/notifications/alertsThr
+
+###

@@ -1,0 +1,39 @@
+@host = http://localhost:3030
+
+get {{host}}/batteries
+
+###
+
+get {{host}}/batteries/1
+
+###
+
+post {{host}}/batteries/new
+content-type: application/json
+
+{
+    "capacity": "2200",
+    "voltage": "12",
+    "expiration_date": "2023-10-10",
+    "current_cycles": "80",
+    "max_cycles": "500",
+    "id_equipment": "4"
+}
+
+###
+
+put {{host}}/batteries/6
+content-type: application/json
+
+{
+    "capacity": "2200",
+    "voltage": "12",
+    "expiration_date": "2023-10-10",
+    "current_cycles": "80",
+    "max_cycles": "500",
+    "id_equipment": "4"
+}
+
+###
+
+delete {{host}}/batteries/6

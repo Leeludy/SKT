@@ -1,24 +1,48 @@
 // Initialise express router
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 //Use express.json middleware
 router.use(express.json());
 
 // Load mariadb pool
-const pool = require('../db/db');
+const pool = require("../db/skt_db");
 
 // Endpoint All equipment '/equipment'
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // Get connection from pool
     const conn = await pool.getConnection();
 
     // Create new query
-    const myquery = 'SELECT * FROM equipment';
+    const myquery = "SELECT * FROM equipment";
 
     // Execute query
     const rows = await conn.query(myquery);
+    conn.end();
+    conn.release();
+
+    // Response to client
+    res.status(200).json(rows);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// End point models equipment '/models'
+router.get("/models", async (req, res) => {
+  try {
+    // Get connection from pool
+    const conn = await pool.getConnection();
+
+    // Create new query
+    const myquery =
+      "SELECT model_categorie FROM equipment GROUP BY model_categorie asc";
+
+    // Execute query
+    const rows = await conn.query(myquery);
+    conn.end();
+    conn.release();
 
     // Response to client
     res.status(200).json(rows);
@@ -28,14 +52,14 @@ router.get('/', async (req, res) => {
 });
 
 // Endpoint New equipment '/equipment/new'
-router.post('/new', async (req, res) => {
+router.post("/new", async (req, res) => {
   try {
     // Get connection from pool
     const conn = await pool.getConnection();
 
     // Create new query
     const myquery =
-      "INSERT INTO equipment (name, serial, description, location, is_alert, qr_code_url) VALUES (?, ?, ?, ?, ?, ?)";
+      "INSERT INTO equipment (ean13, model_name, model_categorie, serial_number, location, is_alert, notes ) VALUES (?, ?, ?, ?, ?, ?)";
 
     // Execute query
     const rows = await conn.query(myquery, [
@@ -46,6 +70,8 @@ router.post('/new', async (req, res) => {
       req.body.is_alert,
       req.body.qr_code_url,
     ]);
+    conn.end();
+    conn.release();
 
     // Response to client
     res.status(201).send(`Equipment ${req.body.name}, created!`);
@@ -55,16 +81,18 @@ router.post('/new', async (req, res) => {
 });
 
 // Endpoint Single equipment '/equipment/:id'
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     // Get connection from pool
     const conn = await pool.getConnection();
 
     // Create new query
-    const myquery = 'SELECT * FROM equipment WHERE id = ?';
+    const myquery = "SELECT * FROM equipment WHERE id = ?";
 
     // Execute query
     const rows = await conn.query(myquery, [req.params.id]);
+    conn.end();
+    conn.release();
 
     // Response to client
     res.status(200).json(rows);
@@ -74,44 +102,49 @@ router.get('/:id', async (req, res) => {
 });
 
 // Endpoint Update equipment '/equipment/:id'
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     // Get connection from pool
     const conn = await pool.getConnection();
 
     // Create new query
     const myquery =
-      'UPDATE equipment SET name = ?, serial = ?, description = ?, location = ?, is_alert = ?, qr_code_url = ? WHERE id = ?';
+      "UPDATE equipment SET ean13 = ?, model_name = ?, model_categorie = ?, serial_number = ?, location = ?, is alert = ?, note = ? WHERE id = ?";
 
     // Execute query
     const rows = await conn.query(myquery, [
-      req.body.name,
-      req.body.serial,
-      req.body.description,
+      req.body.ean13,
+      req.body.model_name,
+      req.body.model_categorie,
+      req.body.serial_number,
       req.body.location,
       req.body.is_alert,
-      req.body.qr_code_url,
+      req.body.note,
       req.params.id,
     ]);
+    conn.end();
+    conn.release();
 
     // Response to client
-    res.status(200).send(`Equipment ${req.body.name}, updated!`);
+    res.status(200).send(`Equipment ${req.body.model_name}, updated!`);
   } catch (err) {
     console.log(err);
   }
 });
 
 // Endpoint Delete equipment '/equipment/:id'
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     // Get connection from pool
     const conn = await pool.getConnection();
 
     // Create new query
-    const myquery = 'DELETE FROM equipment WHERE id = ?';
+    const myquery = "DELETE FROM equipment WHERE id = ?";
 
     // Execute query
     const rows = await conn.query(myquery, [req.params.id]);
+    conn.end();
+    conn.release();
 
     // Response to client
     res.status(200).send(`Equipment ${req.params.id}, deleted!`);

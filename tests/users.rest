@@ -17,7 +17,7 @@ content-type: application/json
     "email": "davetest.com",
     "password": "junior/2",
     "role": "Admin",
-    "notes": "In full charge"
+    "notes": "Working hard..."
 }
 
 ###
