@@ -43,3 +43,8 @@ div.noPadding {
     margin-bottom: 2;
 }
 
+.viewPort-container {
+    width: 98%;
+    margin-left: 3rem;
+    margin-bottom: 3rem;
+}

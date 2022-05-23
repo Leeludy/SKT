@@ -21,7 +21,7 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
   } = useForm({
     defaultValues: {
       title: mission?.title,
-      description: mission?.description,
+      details: mission?.details,
       location: mission?.location,
       start_date: dateToInputDateFormat(mission?.start_date),
       end_date: dateToInputDateFormat(mission?.end_date),
@@ -114,11 +114,11 @@ function MissionForm({ onSubmit, mission, isReadOnly, children }) {
       </div>
 
       <div className="form-group mb-3">
-        <label>Description</label>
+        <label>Details</label>
         <textarea
           {...inputState}
-          id="missionDescription"
-          {...register("description")}
+          id="missionDetails"
+          {...register("details")}
           rows="3"
         ></textarea>
       </div>

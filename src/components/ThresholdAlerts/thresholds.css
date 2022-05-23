@@ -1,0 +1,12 @@
+
+.card-header {
+    background-color: #adb546;
+}
+
+.fixed-right {
+    background-color: #adb546;
+    position : fixed;
+    right: 2rem;
+    margin-top: 1rem;
+    margin-left: 0;
+}

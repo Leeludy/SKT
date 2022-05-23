@@ -10,10 +10,13 @@ import {
  * is here gived a name in the useQueryMissionName
  * so it will be more easy to interact with a variable instead of string in the application files
  */
-const useQueryMissionsName = "useQueryMissions";
 // reactQuery 'get Missions
 function useQueryMissions(options) {
-  return useQuery(useQueryMissionsName, () => getMissions(), options);
+  return useQuery(["useQueryMissions"], () => getMissions(), options);
+}
+
+function useQueryMission(missionId, options) {
+  return useQuery(["useQueryMission", missionId], () => getMissions(), options);
 }
 
 // reactQuery to create a mission
@@ -23,7 +26,7 @@ function useMutationCreateMission(options) {
 
 // reactQuery to modify a mission
 function useMutationEditMission(options) {
-  return useMutation(({ mission }) => putMission(mission), options);
+  return useMutation(({ data }) => putMission(data), options);
 }
 
 // reactQuery to delete a mission

@@ -7,6 +7,27 @@ ul {
     list-style: none;
 }
 
+.viewPort-container {
+    width: 98%;
+    margin-left: 3rem;
+    margin-bottom: 4rem;
+}
+
+.mission-header {
+  position: fixed;
+  top: 95;
+  z-index: 999;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  border-top: 10px white;
+  background-color: #f8f9fa;
+}
+
+.list-position {
+    padding-top: 150px;
+}
+
 /* Accordion header color change on click */
 .accordion-button:not(.collapsed) {
     color: #000000;
@@ -20,18 +41,4 @@ ul {
 
 form label {
     font-weight: bold;
-}
-
-.mission-header {
-  position: fixed;
-  top: 95;
-  z-index: 999;
-  padding-top: 1rem;
-  text-align: center;
-  border-top: 10px white;
-  background-color: #f8f9fa;
-}
-
-.list-position {
-    padding-top: 150px;
 }
