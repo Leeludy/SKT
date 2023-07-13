@@ -2,7 +2,7 @@
 
 ### Descridtion
 
-This project has been initialized as a team 3 to conclude our web development studies.\
+This project was initialized as a team 3 to conclude our web development studies.\
 It was taken up by the sponsor company and still keep growing.
 Designed to be a real tool for the field, for people working directly with the stock and primarily interested in monitoring drone spare parts,\
 Usability and ergonomics are preferred over administrative and financial aspects.
